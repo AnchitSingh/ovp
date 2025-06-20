@@ -2,7 +2,6 @@
 
 <div align="center">
 
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Version](https://img.shields.io/badge/version-2.0.0-brightgreen.svg)](https://github.com/yourrepo/ovp)
 [![Performance](https://img.shields.io/badge/performance-29.19x_faster-red.svg)](#performance)
 [![Safety](https://img.shields.io/badge/safety-100%25_tested-green.svg)](#safety)
@@ -296,19 +295,6 @@ impl OVP {
 - **Hardware**: Wireless interface supporting promiscuous mode
 - **Architecture**: x86_64 (optimized for modern CPUs)
 
-### **Setup Instructions**
-
-```bash
-# Grant CAP_NET_RAW to your binary (recommended)
-sudo setcap cap_net_raw+ep your_binary
-
-# Or run with root privileges
-sudo ./your_binary
-
-# Ensure wireless interface is up
-sudo ip link set wlan0 up
-```
-
 ---
 
 ## 🧪 **Testing & Validation**
@@ -321,48 +307,7 @@ cargo test
 
 # Run with optimizations
 cargo test --release
-
-# Benchmark performance
-cargo bench
 ```
-
-### **Safety Verification**
-
-```bash
-# Memory safety audit
-cargo audit
-
-# Static analysis
-cargo clippy -- -W clippy::all
-
-# Memory leak detection
-valgrind ./target/release/your_binary
-```
-
----
-
-## 🤝 **Contributing**
-
-We welcome contributions to the OVP revolution! Here's how you can help:
-
-1. **🍴 Fork** the repository
-2. **🌿 Create** a feature branch (`git checkout -b feature/amazing-feature`)
-3. **💾 Commit** your changes (`git commit -m 'Add amazing feature'`)
-4. **📤 Push** to the branch (`git push origin feature/amazing-feature`)
-5. **🔃 Open** a Pull Request
-
-### **Contribution Guidelines**
-
-- Maintain zero-allocation hot paths
-- Add comprehensive tests for new features
-- Follow Rust idioms and safety practices
-- Update documentation for API changes
-
----
-
-## 📄 **License**
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
 
