@@ -3,5 +3,12 @@ name = "ovp"
 version = "0.1.0"
 edition = "2024"
 
-[dependencies]
-rand = "0.9.1"
+# Add this section to your Cargo.toml
+[lib]
+crate-type = ["rlib", "cdylib"]
+
+[profile.release]
+strip = true
+lto = "fat"
+codegen-units = 1
+opt-level = 3
