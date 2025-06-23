@@ -198,22 +198,22 @@ unsafe extern "C" {
 #[derive(Clone)]
 pub struct OmegaSocket {
     /// Raw file descriptor for the packet socket
-    raw_fd: RawFd,
+    pub raw_fd: RawFd,
     
     /// Network interface index for packet transmission
-    interface_index: u32,
+    pub interface_index: u32,
     
     /// Pre-allocated send buffer - prevents allocation in hot path
     /// Sized to maximum frame size for zero-copy operations
-    send_buffer: Box<[u8; MAX_FRAME_SIZE]>,
+    pub send_buffer: Box<[u8; MAX_FRAME_SIZE]>,
     
     /// Pre-allocated receive buffer - prevents allocation in hot path
     /// Large size handles burst traffic without drops
-    recv_buffer: Box<[u8; RECV_BUFFER_SIZE]>,
+    pub recv_buffer: Box<[u8; RECV_BUFFER_SIZE]>,
     
     /// Pre-computed destination address for broadcast operations
     /// Eliminates repeated address computation in hot path
-    dest_addr: SockaddrLl,
+    pub dest_addr: SockaddrLl,
 }
 
 impl OmegaSocket {
@@ -649,7 +649,7 @@ impl Clone for OVP {
 /// Uses unsafe pointer operations for performance. All bounds checking
 /// is performed before unsafe operations to ensure memory safety.
 #[inline(always)]
-fn parse_ovp_frame_fast(frame: &[u8], my_id: DroneId) -> Option<&[u8]> {
+pub fn parse_ovp_frame_fast(frame: &[u8], my_id: DroneId) -> Option<&[u8]> {
     // Quick length check - minimum OVP frame is 12 bytes (header only)
     if frame.len() < 12 { 
         return None; 
